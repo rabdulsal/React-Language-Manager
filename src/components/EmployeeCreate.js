@@ -5,6 +5,12 @@ import { employeeUpdate } from '../actions';
 import { Card, CardSection, Input, Button } from './common';
 
 class EmployeeCreate extends Component {
+  onButtonPress() {
+    const { name, phone, shift } = this.props;
+
+    this.props.employeeCreate({ name, phone, shift })
+  }
+
   render() {
     return (
       <Card>
@@ -33,7 +39,7 @@ class EmployeeCreate extends Component {
             onValueChange={value => this.props.employeeUpdate({ prop: 'shift', value })}
           >
             <Picker.Item label="Sunday" value="Sunday" />
-            <Picker.Item label="Monday" value="" />
+            <Picker.Item label="Monday" value="Monday" />
             <Picker.Item label="Tuesday" value="Tuesday" />
             <Picker.Item label="Wednesday" value="Wednesday" />
             <Picker.Item label="Thursday" value="Thursday" />
@@ -43,7 +49,7 @@ class EmployeeCreate extends Component {
         </CardSection>
 
         <CardSection>
-          <Button>
+          <Button onPress={this.onButtonPress.bind(this)}>
             Create!
           </Button>
         </CardSection>
